@@ -51,32 +51,37 @@
 
 <div class="container">
   <div ng-controller="MainCtrl" class="row">
-    <div class="col-md-8">
+    <div class="col-xs-8">
       <div ng-controller="SubCtrl">
         <H1 ng-bind="title"></H1>
       </div>
       <div ng-repeat=" movie in movies">
         <H3 ng-bind="movie.title"></H3>
+        <img ng-src="{{movie.image}}" />
         <div ng-bind="movie.description"></div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-xw-1">
+      <span class="glyphicon glyphicon-menu-right" ng-show="closed" ng-click="closed=false"></span>
+      <span class="glyphicon glyphicon-menu-down" ng-hide="closed" ng-click="closed=true"></span>
+    </div>
+    <div class="col-xs-4" ng-hide="closed">
       <H2>Add</H2>
       <div class="form-group">
         <label>Title</label>
-        <input class="form-control" ng-keyup="validateTitle()" placeholder="Enter title" ng-mode="newMoveTitle" />
+        <input class="form-control" ng-keyup="validateTitle()" placeholder="Enter title" ng-model="movie.title" />
       </div>
       <div class="form-group">
         <label>Image</label>
-        <input class="form-control" placeholder="Image" ng-model="newMovieImage" />
-        <div>
+        <input class="form-control" placeholder="Image" ng-model="movie.image" />
+        <div ng-show="movie.image.length > 7 && movie.image.substr(-3) === 'png'">
           <h4>Preview</h4>
-          <img ng-src="{{newMovieImage}}">
+          <img ng-src="{{movie.image}}">
         </div>
       </div>
       <div class="form-group">
         <label>Catagory</label>
-        <select class="form-control" ng-change="checkCategorySelected()" ng-model="newMovieCategory">
+        <select class="form-control" ng-change="checkCategorySelected()" ng-model="movie.category">
           <option value="">-</option>
           <option value="Epic">Epic</option>
           <option value="Awesome">Awesome</option>
@@ -85,9 +90,9 @@
       </div>
       <div class="form-group">
         <label>Description</label>
-        <textarea class="form-control" ng-blur="checkDescription()" ng-model="newMovieDescription"></textarea>
+        <textarea class="form-control" ng-blur="checkDescription()" ng-model="movie.description"></textarea>
       </div>
-      <button class="btn bnt-info" ng-click="addMovie()">Add</button>
+      <button class="btn bnt-info" ng-click="addMovie()" ng-show="isValid()">Add</button>
     </div>
   </div>
 
