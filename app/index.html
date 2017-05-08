@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
-<head>
+<>
   <meta charset="utf-8">
   <title></title>
   <meta name="description" content="">
+  <base href="/"></base>
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
@@ -26,77 +27,26 @@
   <div class="navbar navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
-
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-
-        <a class="navbar-brand" href="#/">movieMania</a>
+        <a class="navbar-brand" href="/">movieMania</a>
       </div>
-
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#/">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#/">Contact</a></li>
+          <li class="active"><a href="/">Home</a></li>
+          <li><a ng-href="/about">About</a></li>
+          <li><a ng-href="/contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div ng-controller="MainCtrl" class="row">
-    <div class="col-xs-8">
-      <div ng-controller="SubCtrl">
-        <H1 ng-bind="title"></H1>
-      </div>
-      <div ng-repeat=" movie in movies">
-        <H3 ng-bind="movie.title"></H3>
-        <img ng-src="{{movie.image}}" />
-        <div ng-bind="movie.description"></div>
-      </div>
-    </div>
-    <div class="col-xw-1">
-      <span class="glyphicon glyphicon-menu-right" ng-show="closed" ng-click="closed=false"></span>
-      <span class="glyphicon glyphicon-menu-down" ng-hide="closed" ng-click="closed=true"></span>
-    </div>
-    <div class="col-xs-4" ng-hide="closed">
-      <H2>Add</H2>
-      <div class="form-group">
-        <label>Title</label>
-        <input class="form-control" ng-keyup="validateTitle()" placeholder="Enter title" ng-model="movie.title" />
-      </div>
-      <div class="form-group">
-        <label>Image</label>
-        <input class="form-control" placeholder="Image" ng-model="movie.image" />
-        <div ng-show="movie.image.length > 7 && movie.image.substr(-3) === 'png'">
-          <h4>Preview</h4>
-          <img ng-src="{{movie.image}}">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Catagory</label>
-        <select class="form-control" ng-change="checkCategorySelected()" ng-model="movie.category">
-          <option value="">-</option>
-          <option value="Epic">Epic</option>
-          <option value="Awesome">Awesome</option>
-          <option value="Average">Average</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Description</label>
-        <textarea class="form-control" ng-blur="checkDescription()" ng-model="movie.description"></textarea>
-      </div>
-      <button class="btn bnt-info" ng-click="addMovie()" ng-show="isValid()">Add</button>
-    </div>
-  </div>
-
-</div>
+<div ng-view=""></div>
 
 <div class="footer">
   <div class="container">
@@ -136,6 +86,8 @@
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
 <script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/movie.js"></script>
+<script src="scripts/controllers/contact.js"></script>
 <!-- endbuild -->
 </body>
 </html>

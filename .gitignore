@@ -71,9 +71,6 @@ bower_components/
 dist/
 node_modules/
 .tmp/
-.editorconfig
-.jscsrc
-.jshintrc
-.yo-rc.json
+
 
 # End of https://www.gitignore.io/api/webstorm

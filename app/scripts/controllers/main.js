@@ -8,15 +8,19 @@
  * Controller of the movieManiaApp
  */
 angular.module('movieManiaApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $location) {
     var movieList = [{
+        id: 23,
         title: 'Ace Drummond',
+        slug: 'ace-drummond',
         image: '/images/awesomehuh.png',
         description: 'This 13 chapter is based on some shit.',
       category: 'Epic'
       },
       {
+        id: 5,
         title: 'Zakuul',
+        slug: 'zakuul',
         image: '/images/gink.png',
         description: 'This where the Sith lay.',
         category: 'Aweseom'
@@ -45,6 +49,13 @@ angular.module('movieManiaApp')
         return false;
       }
       return true;
+    }
+
+    $scope.goToRandomMovie = function() {
+      var index = Math.floor(Math.random() * $scope.movies.length);
+      var movie = $scope.movies[index];
+      var url = 'movie/'+ movie.id +'/' + movie.slug;
+      $location.url(url);
     }
 
     $scope.validateTitle = function() {
