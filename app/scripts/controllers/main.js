@@ -8,28 +8,22 @@
  * Controller of the movieManiaApp
  */
 angular.module('movieManiaApp')
-  .controller('MainCtrl', function ($scope, $location) {
-    var movieList = [{
-        id: 23,
-        title: 'Ace Drummond',
-        slug: 'ace-drummond',
-        image: '/images/awesomehuh.png',
-        description: 'This 13 chapter is based on some shit.',
-      category: 'Epic'
-      },
-      {
-        id: 5,
-        title: 'Zakuul',
-        slug: 'zakuul',
-        image: '/images/gink.png',
-        description: 'This where the Sith lay.',
-        category: 'Aweseom'
+  .controller('MainCtrl', function ($scope, $location, $http) {
+    $scope.movies = '';
+    $http.get('/movies.json').success(function(data, status, headers, config){
+      for(var i in data) {
+        data[i].slug = data[i].title.toLocaleLowerCase().replace(/ /g, '-');
       }
-    ];
+      $scope.movies = data;
+    }).error(function(data, status, headers, config){
+      if(status === 404) {
+        console.debug('Not found');
+      }else{
+        console.debug('Unknown error');
+      }
+    });
 
     $scope.close = false;
-
-    $scope.movies = movieList;
 
     $scope.movie = {
       title: '',
