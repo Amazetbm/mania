@@ -1,3 +1,23 @@
 <h1 ng-bind="movie.title"></h1>
-<img ng-src="{{movie.image}}" />
-<p ng-bind="movie.description"></p>
+<div>
+  <div>
+    <h2>Synopsis</h2>
+    <img ng-src="{{movie.image}}" />
+    <p ng-bind="movie.description"></p>
+  </div>
+  <div>
+    <h2>Cast</h2>
+  </div>
+  <div>
+    <div class="movie">
+      <p ng-show="loading">
+        <img src="https://www.tmdn.org/tmdsview-web/resources/images/loading-gallery.gif" />
+      </p>
+      <p>
+        <span ng-bind="movie.abstract"></span>
+        <span ng-bind="movie.abstractSource"></span>
+        <span><a href="https://duckduckgo.com/">Results via DuckDuckGo</a></span>
+      </p>
+    </div>
+  </div>
+</div>

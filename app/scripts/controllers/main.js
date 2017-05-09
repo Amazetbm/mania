@@ -14,7 +14,6 @@ angular.module('movieManiaApp')
       for(var i in data) {
         data[i].slug = data[i].title.toLocaleLowerCase().replace(/ /g, '-');
       }
-      console.debug(data);
       $scope.movies = data;
     }).error(function(data, status, headers, config){
       if(status === 404) {

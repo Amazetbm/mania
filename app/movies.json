@@ -2,6 +2,7 @@
   {
     "id": 23,
     "title": "Ace Drummond",
+    "searchTerms": "Ace Drummond",
     "image": "/images/awesomehuh.png",
     "description": "This 13 chapter is based on some shit.",
     "category": "Epic"
@@ -9,6 +10,7 @@
   {
     "id": 5,
     "title": "Zakuul",
+    "searchTerms": "Zakuul",
     "image": "/images/gink.png",
     "description": "This where the Sith lay.",
     "category": "Aweeome"
@@ -16,7 +18,8 @@
   {
     "id": 34,
     "title": "Alderaan is gone",
-    "image": "/images/happy.png",
+    "searchTerms": "Alderaan",
+    "image": "/images/crying.png",
     "description": "You are my only hope.",
     "category": "Awesome"
   }
